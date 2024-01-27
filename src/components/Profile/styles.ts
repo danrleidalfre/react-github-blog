@@ -7,6 +7,7 @@ export const Card = styled.section`
   padding: 2rem 2.5rem;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
   display: flex;
+  align-items: center;
 
   img {
     width: 9.25rem;
