@@ -27,6 +27,7 @@ interface PostRequest {
 interface PostContextType {
   posts: Post[]
   total: number
+  onFetchPosts: (query: string) => void
 }
 
 interface PostsProviderProps {
@@ -42,7 +43,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
   const fetchPosts = useCallback(async (query?: string) => {
     const { data } = await api.get('/search/issues', {
       params: {
-        q: `${query || ''}repo:danrleidalfre/react-github-blog`,
+        q: `${query || ''} repo:danrleidalfre/react-github-blog`,
       },
     })
 
@@ -69,8 +70,12 @@ export function PostsProvider({ children }: PostsProviderProps) {
     fetchPosts()
   }, [fetchPosts])
 
+  function onFetchPosts(query: string) {
+    fetchPosts(query)
+  }
+
   return (
-    <PostsContext.Provider value={{ posts, total }}>
+    <PostsContext.Provider value={{ posts, total, onFetchPosts }}>
       {children}
     </PostsContext.Provider>
   )
