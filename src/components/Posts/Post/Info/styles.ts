@@ -4,38 +4,14 @@ export const Card = styled.section`
   max-width: 54rem;
   margin: -5.5rem auto 0;
   background-color: ${(props) => props.theme['base-profile']};
-  padding: 2rem 2.5rem;
+  padding: 2rem;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
   border-radius: 0.625rem;
-
-  img {
-    width: 9.25rem;
-    height: 9.25rem;
-    border-radius: 0.5rem;
-  }
 `
 
-export const Info = styled.div`
-  margin-left: 2rem;
-`
-
-export const Title = styled.div`
+export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-
-  h1 {
-    color: ${(props) => props.theme['base-title']};
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-
-  p {
-    color: ${(props) => props.theme['base-text']};
-    font-size: 1rem;
-    margin-top: 0.5rem;
-  }
 `
 
 export const Link = styled.a`
@@ -45,9 +21,11 @@ export const Link = styled.a`
   font-weight: 700;
   font-size: 0.75rem;
   position: relative;
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
 
   i {
-    margin-left: 0.5rem;
     font-size: 0.75rem;
   }
 
@@ -56,8 +34,7 @@ export const Link = styled.a`
     position: absolute;
     width: 100%;
     height: 1px;
-    bottom: 15px;
-    left: 0;
+    bottom: -5px;
     background-color: ${(props) => props.theme.blue};
     visibility: hidden;
     transform: scaleX(0);
@@ -73,8 +50,15 @@ export const Link = styled.a`
   }
 `
 
+export const Title = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: ${(props) => props.theme['base-title']};
+  margin-top: 1.25rem;
+`
+
 export const Labels = styled.div`
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   display: flex;
   gap: 1.5rem;
 `
@@ -93,4 +77,10 @@ export const Label = styled.div`
     font-size: 1.125rem;
     color: ${(props) => props.theme['base-label']};
   }
+`
+
+export const Content = styled.main`
+  padding: 2rem 2.5rem;
+  max-width: 54rem;
+  margin: 0 auto;
 `

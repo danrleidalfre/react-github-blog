@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const PostContainer = styled.section`
+export const PostContainer = styled.main`
   max-width: 54rem;
   margin: 0 auto 14rem;
   display: grid;
