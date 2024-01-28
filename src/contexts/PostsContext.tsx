@@ -15,7 +15,7 @@ interface User {
 }
 
 interface PostRequest {
-  id: number
+  number: number
   url: string
   title: string
   user: User
@@ -49,7 +49,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
 
     const posts = data.items.map((post: PostRequest) => {
       return {
-        id: post.id,
+        id: post.number,
         link: post.url,
         title: post.title,
         created: formatDistanceToNow(new Date(post.created_at), {
