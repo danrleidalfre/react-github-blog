@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const PostLink = styled.a`
+  text-decoration: none;
+`
+
 export const PostContent = styled.article`
   padding: 2rem;
   border-radius: 0.625rem;
@@ -12,6 +16,7 @@ export const PostContent = styled.article`
     color: ${(props) => props.theme['base-text']};
     font-size: 1rem;
     font-weight: 400;
+    margin: 1.25rem 0;
   }
 
   &:hover {
@@ -22,15 +27,14 @@ export const PostContent = styled.article`
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
 
   h4 {
-    max-width: 17rem;
     color: ${(props) => props.theme['base-title']};
     font-size: 1.25rem;
     font-weight: 700;
   }
-
+`
+export const Footer = styled.footer`
   time {
     color: ${(props) => props.theme['base-span']};
     font-size: 0.875rem;

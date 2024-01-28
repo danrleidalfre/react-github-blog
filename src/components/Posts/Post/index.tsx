@@ -1,17 +1,18 @@
-import { Header, PostContent } from './styles.ts'
+import { Footer, Header, PostContent, PostLink } from './styles.ts'
+import { Post as PostProps } from '../index.tsx'
 
-export function Post() {
+export function Post({ id, title, created, content }: PostProps) {
   return (
-    <PostContent>
-      <Header>
-        <h4>JavaScript data types and data structures</h4>
-        <time>Há 1 dia</time>
-      </Header>
-      <p>
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in...
-      </p>
-    </PostContent>
+    <PostLink href={`/${id}`}>
+      <PostContent>
+        <Header>
+          <h4>{title}</h4>
+        </Header>
+        <p>{content.slice(0, 250)}...</p>
+        <Footer>
+          <time>{created}</time>
+        </Footer>
+      </PostContent>
+    </PostLink>
   )
 }
