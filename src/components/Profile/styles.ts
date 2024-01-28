@@ -19,6 +19,7 @@ export const Card = styled.section`
 
 export const Info = styled.div`
   margin-left: 2rem;
+  width: 100%;
 `
 
 export const Title = styled.div`

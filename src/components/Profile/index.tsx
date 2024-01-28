@@ -1,34 +1,52 @@
 import { Card, Info, Label, Labels, Link, Title } from './styles.ts'
+import { useCallback, useEffect, useState } from 'react'
+import { api } from '../../lib/axios.ts'
+
+interface Profile {
+  name?: string
+  bio?: string
+  html_url?: string
+  login?: string
+  company?: string
+  followers?: number
+}
 
 export function Profile() {
+  const [profile, setProfile] = useState<Profile>({})
+
+  const fetchProfile = useCallback(async () => {
+    const { data } = await api.get('/users/danrleidalfre')
+    setProfile(data)
+  }, [])
+
+  useEffect(() => {
+    fetchProfile()
+  }, [fetchProfile])
+
   return (
     <Card>
-      <img src="https://github.com/danrleidalfre.png" alt="" />
+      <img src={`${profile.html_url}.png`} alt="" />
       <Info>
         <Title>
-          <h1>Danrlei Dal Fré</h1>
-          <Link href="https://github.com/danrleidalfre" target="_blank">
+          <h1>{profile.name}</h1>
+          <Link href={profile.html_url} target="_blank">
             <span>Github</span>
             <i className="fa-solid fa-arrow-up-right-from-square" />
           </Link>
         </Title>
-        <p>
-          Commodi similique pariatur cupiditate earum occaecati amet molestiae.
-          Eaque ipsam soluta repellat nobis itaque velit. A eius aperiam
-          molestias quo aperiam qui debitis praesentium.
-        </p>
+        <p>{profile.bio}</p>
         <Labels>
           <Label>
             <i className="fa-brands fa-github" />
-            <span>danrleidalfre</span>
+            <span>{profile.login}</span>
           </Label>
           <Label>
             <i className="fa-solid fa-building" />
-            <span>rpc</span>
+            <span>{profile.company}</span>
           </Label>
           <Label>
-            <i className="fa-solid fa-user-group" />
-            <span>467 seguidores</span>
+            <i className="fa-solid fa-profile-group" />
+            <span>{profile.followers} seguidores</span>
           </Label>
         </Labels>
       </Info>
